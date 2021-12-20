@@ -1,0 +1,146 @@
+:root {
+	--clr-1: #1D6DDE;	/*világosabb	gomb highligt*/
+	--clr-2: #154E9E;	/*világos			gomb*/
+	--clr-3: #1B2838;	/*sötétebb		background*/
+	--clr-4: #213145;	/*sötét				menusáv*/
+	--clr-5: #182433;	/*legsötétebb	valami*/
+	--clr-linear-start: #06BFFF;
+	--clr-linear-end: #2D73FF;
+	
+	--clr-background: rgb(25, 25, 52);
+	--clr-text: rgb(237, 237, 222);
+	--clr-hover: rgba(255, 255, 255, .05);
+	--clr-link-bg: rgb(255,0,127);
+	--clr-link-hover: rgba(255, 255, 255, .25);
+	--scrollbar-radius: 1rem;
+}
+
+::-webkit-scrollbar {
+	width: .65rem;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--clr-3);
+	border-radius: var(--scrollbar-radius);
+}
+ 
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, var(--clr-linear-start) 0%, var(--clr-linear-end) 100%);
+	border-radius: var(--scrollbar-radius);
+}
+
+body {
+	background-color: var(--clr-5);
+	color: var(--clr-text);
+	margin: 0;
+	font-family: "Motiva Sans", Sans-serif;
+}
+
+.content h1 {
+	display: flex;
+	justify-content: center;
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	column-gap: 1rem;
+	grid-gap: 1rem;
+	margin: 2rem;
+	justify-content: center;
+}
+
+.card-container {
+	display: flex;
+	justify-content: center;
+}
+
+.card {
+	display: flex;
+	position: relative;
+	width: 16rem;
+	height: 22rem;
+	background: var(--clr-4);
+	border-radius: 0.5rem;
+	overflow: hidden;
+	flex-direction: column;
+	transition: transform 200ms;
+}
+
+.card:focus,
+.card:target,
+.card:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+.card-cap {
+	display: block;
+	background-position: center;
+	background-size: cover;
+	height: 17rem;
+	width: 16rem;
+}
+
+.card-content {
+	position: relative;
+	width: 100%;
+	flex-grow: 1;
+}
+
+.card-title {
+	font-size: 1.5rem;
+	margin: .5rem;
+	font-weight: bold;
+}
+
+.card-tags {
+	position: absolute;
+	margin: .5rem;
+	bottom: .3rem;
+}
+
+.card-tag {
+	background: linear-gradient(90deg, var(--clr-linear-start) 0%, var(--clr-linear-end) 100%);
+	padding: .3rem .5rem;
+	border-radius: 1rem;
+	font-size: .9rem;
+}
+
+
+
+.navi {
+	font-size: 2rem;
+	width: 100%;
+	overflow: hidden;
+	background-color: var(--clr-4);
+}
+		
+.navlabels {
+	height: 100%;
+	overflow: auto;
+}
+		
+.navlabel {
+	background: linear-gradient(90deg, var(--clr-linear-start) 0%, var(--clr-linear-end) 100%);
+	width: max-content;
+	float: left;
+	margin: .25rem;
+	border-radius: .1rem;
+	display: inline-block;
+	cursor: default;
+}
+
+.navlabel:hover {
+	background: linear-gradient(90deg, var(--clr-linear-start) 30%, var(--clr-linear-end) 150%);;
+}
+
+.navlabel > a, a:visited {
+	text-decoration: none;
+	color: white;
+	padding: 0 .25em;
+}
+
+.content {
+	margin: 2rem;
+}

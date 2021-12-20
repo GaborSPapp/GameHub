@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Poggies</title>
+	<link rel="stylesheet" href="styles.css">
+	<style>
+	</style>
+</head>
+<body>
+	<nav class="navi">
+		<div class="navlabels">
+			<div class="navlabel">
+				<a href="#">Dummy</a>
+			</div>
+			<div class="navlabel">
+				<a href="#">Links</a>
+			</div>
+			<div class="navlabel">
+				<a href="#">Yes</a>
+			</div>
+		</div>
+	</nav>
+	
+	
+	<div class="main">
+		<div class="content">
+			<h1>Games</h1>
+			<div class="cards-container">
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('res/amoeba.png')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Amőba</h2>
+							<div class="card-tags">
+								<span class="card-tag">2 Player</span>
+								<span class="card-tag">Turn-Based</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('https://image.api.playstation.com/cdn/EP0001/CUSA04040_00/LRI3Rg5MKOi5AkefFaMcChNv5WitM7sz.png')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Uno</h2>
+							<div class="card-tags">
+								<span class="card-tag">Chill</span>
+								<span class="card-tag">Strategy</span>
+								<span class="card-tag">Yes</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('https://store-images.s-microsoft.com/image/apps.41929.14246448385562777.7795b656-4cc6-43e1-897f-ecca74691263.ce6424bf-ec09-434a-9a0d-6d9507621cfa?mode=scale&q=90&h=1080&w=1920')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Connect 4</h2>
+							<div class="card-tags">
+								<span class="card-tag">Coming</span>
+								<span class="card-tag">Soon</span>
+								<span class="card-tag">2 Player</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('https://i.ebayimg.com/images/g/2dwAAOSwJuZbtcfy/s-l400.jpg')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Battleship</h2>
+							<div class="card-tags">
+								<span class="card-tag">For</span>
+								<span class="card-tag">Holding</span>
+								<span class="card-tag">Place</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('http://ipadboardgames.org/wp-content/uploads/2011/05/bang1.jpg')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Bang</h2>
+							<div class="card-tags">
+								<span class="card-tag">Leave</span>
+								<span class="card-tag">Me</span>
+								<span class="card-tag">Alone</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('https://preview.redd.it/82h08yqbucs11.jpg?auto=webp&s=361862ce9c3c9abb0b16424e7411bfc779eb4fe9')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Pamper The Doggo</h2>
+							<div class="card-tags">
+								<span class="card-tag">Fluffy</span>
+								<span class="card-tag">Puppy</span>
+								<span class="card-tag">Love</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('res/coin.gif')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Free Money</h2>
+							<div class="card-tags">
+								<span class="card-tag">2 Player</span>
+								<span class="card-tag">Turn-Based</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('res/lidl.png')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Lidl Games</h2>
+							<div class="card-tags">
+								<span class="card-tag">2 Player</span>
+								<span class="card-tag">Turn-Based</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-container">
+					<div tabindex="0" class="card">
+						<span class="card-cap" style="background-image: url('res/nextprofile4.jpg')"></span>
+						<div class="card-content">
+							<h2 class="card-title">Hello There</h2>
+							<div class="card-tags">
+								<span class="card-tag">2 Player</span>
+								<span class="card-tag">Turn-Based</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		document.querySelectorAll('.card').forEach(card => {
+			const event = function() {
+				let title = card.querySelectorAll('.card-title')[0].firstChild.nodeValue;
+				alert(title + " isn't availabel yet.");
+			}
+			
+			card.addEventListener('click', () => event());
+			card.addEventListener('keyup', (k) => {if (k.key == 'Enter') event()});
+		});
+	</script>
+</body>
+</html>
