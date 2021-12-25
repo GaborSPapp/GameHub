@@ -31,8 +31,8 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce blandit commodo elit. Phasellus felis diam, semper in pulvinar ut, egestas eu velit. Sed viverra mi eros, sollicitudin maximus ante feugiat in. Mauris vestibulum rutrum blandit. Nulla erat nisi, placerat nec eros ac, molestie congue massa.</p>
 		</div>
 		<div class="dialog-button-container">
-			<button id="join" class="dialog-button">Join Game</button>
-			<button id="host" class="dialog-button">Host Game</button>
+			<button id="join-button" class="dialog-button">Join Game</button>
+			<button id="host-button" class="dialog-button">Host Game</button>
 		</div>
 		<h2 style="display: none">This game isn't available yet.</h2>
 	</dialog>
@@ -42,7 +42,7 @@
 			<h1>Games</h1>
 			<div class="cards-container">
 				<div class="card-container">
-					<div tabindex="0" class="card">
+					<div tabindex="0" class="card" data-href="games/amoeba">
 						<span class="card-cap" style="background-image: url('res/amoeba.png')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Amoeba</h2>
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('https://image.api.playstation.com/cdn/EP0001/CUSA04040_00/LRI3Rg5MKOi5AkefFaMcChNv5WitM7sz.png')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Uno</h2>
@@ -67,7 +67,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('https://store-images.s-microsoft.com/image/apps.41929.14246448385562777.7795b656-4cc6-43e1-897f-ecca74691263.ce6424bf-ec09-434a-9a0d-6d9507621cfa?mode=scale&q=90&h=1080&w=1920')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Connect 4</h2>
@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('https://i.ebayimg.com/images/g/2dwAAOSwJuZbtcfy/s-l400.jpg')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Battleship</h2>
@@ -93,7 +93,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('http://ipadboardgames.org/wp-content/uploads/2011/05/bang1.jpg')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Bang</h2>
@@ -106,7 +106,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('https://preview.redd.it/82h08yqbucs11.jpg?auto=webp&s=361862ce9c3c9abb0b16424e7411bfc779eb4fe9')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Pamper The Doggo</h2>
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('res/coin.gif')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Free Money</h2>
@@ -131,7 +131,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('res/lidl.png')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Lidl Games</h2>
@@ -143,7 +143,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card soon">
+					<div tabindex="0" class="card inactive">
 						<span class="card-cap" style="background-image: url('res/nextprofile4.jpg')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Hello There</h2>
@@ -164,25 +164,35 @@
 		const dgBtns = document.querySelectorAll('.dialog-button-container')[0];
 		const dgTitle = dg.querySelectorAll('h1')[0];
 		const dgErrMsg = dg.querySelectorAll('h2')[0];
+		const hostBtn = document.getElementById('host-button');
+		const joinBtn = document.getElementById('join-button');
 		
-		dgClose.addEventListener('click', () => dg.close());
+		dgClose.addEventListener('click', () => {
+			dg.close();
+			document.activeElement.blur();
+		});
+		
+		document.addEventListener('keyup', (k) => console.log(k.keyCode));
 		
 		document.querySelectorAll('.card').forEach(card => {
 			const title = card.querySelectorAll('.card-title')[0].firstChild.nodeValue;
-			const event = function() {
+			const href = card.dataset.href;
+			const openDialog = function() {
 				dg.showModal();
 				dgTitle.innerText = title;
-				if (card.classList.contains('soon')) {
+				if (card.classList.contains('inactive')) {
 					dgBtns.style.display = 'none';
 					dgErrMsg.style.display = 'grid';
 				} else {
 					dgBtns.style.display = 'grid';
 					dgErrMsg.style.display = 'none';
 				}
+				joinBtn.addEventListener('click', () => console.log(window.location.href + href + '/join.html'));
+				
 			}
 			
-			card.addEventListener('click', () => event());
-			card.addEventListener('keyup', (k) => {if (k.key == 'Enter') event()});
+			card.addEventListener('click', () => openDialog());
+			card.addEventListener('keyup', (k) => {if (k.key == 'Enter') openDialog()});
 		});
 	</script>
 </body>
