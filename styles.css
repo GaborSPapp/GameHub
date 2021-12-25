@@ -30,7 +30,7 @@
 }
 
 body::-webkit-scrollbar-thumb:hover {
-	filter: contrast(0);
+	background: linear-gradient(180deg, var(--clr-linear-start) 30%, var(--clr-linear-end) 150%);
 }
 
 body {
@@ -101,7 +101,7 @@ body {
 
 
 
-/* CONTAINERs */
+/* CONTAINERS */
 .main {
 	display: inline-block;
 	width: 100%;
