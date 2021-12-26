@@ -164,19 +164,21 @@
 		const dgBtns = document.querySelectorAll('.dialog-button-container')[0];
 		const dgTitle = dg.querySelectorAll('h1')[0];
 		const dgErrMsg = dg.querySelectorAll('h2')[0];
-		const hostBtn = document.getElementById('host-button');
 		const joinBtn = document.getElementById('join-button');
+		const hostBtn = document.getElementById('host-button');
 		
-		dgClose.addEventListener('click', () => {
-			dg.close();
-			document.activeElement.blur();
-		});
+		let joinAction;
+		let hostAction;
+		joinBtn.addEventListener('click', () => joinAction());
+		hostBtn.addEventListener('click', () => hostAction());
 		
+		dgClose.addEventListener('click', () => {dg.close(); document.activeElement.blur();});
 		document.addEventListener('keyup', (k) => console.log(k.keyCode));
 		
 		document.querySelectorAll('.card').forEach(card => {
 			const title = card.querySelectorAll('.card-title')[0].firstChild.nodeValue;
 			const href = card.dataset.href;
+			
 			const openDialog = function() {
 				dg.showModal();
 				dgTitle.innerText = title;
@@ -187,8 +189,14 @@
 					dgBtns.style.display = 'grid';
 					dgErrMsg.style.display = 'none';
 				}
-				joinBtn.addEventListener('click', () => console.log(window.location.href + href + '/join.html'));
-				
+						
+				//pl.: amoeba/index.html		cookieban: host/join
+				joinAction = function () {
+					console.log(window.location.href + href + '/join.html')
+				}
+				hostAction = function () {
+					console.log(window.location.href + href + '/host.html')
+				}
 			}
 			
 			card.addEventListener('click', () => openDialog());
