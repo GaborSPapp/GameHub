@@ -3,8 +3,6 @@
 <head>
 	<title>GameHub</title>
 	<link rel="stylesheet" href="styles.css">
-	<style>
-	</style>
 </head>
 <body>
 	<nav class="navi">
@@ -24,17 +22,55 @@
 		</div>
 	</nav>
 	
-	<dialog class="dialog">
+	<dialog id="game-dialog" class="dialog">
 		<div class="dialog-info">
-			<h1 id="dialog-game-title">Game title</h1>
-			<div class="dialog-close"></div>
+			<h1 id="game-dialog-title" class="dialog-title">Game title</h1>
+			<button id="game-dialog-close" class="dialog-close" type="button"></button>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce blandit commodo elit. Phasellus felis diam, semper in pulvinar ut, egestas eu velit. Sed viverra mi eros, sollicitudin maximus ante feugiat in. Mauris vestibulum rutrum blandit. Nulla erat nisi, placerat nec eros ac, molestie congue massa.</p>
 		</div>
-		<div class="dialog-button-container">
-			<button id="join-button" class="dialog-button">Join Game</button>
-			<button id="host-button" class="dialog-button">Host Game</button>
+		<div id="create-lobby-buttons" class="dialog-button-container">
+			<button id="game-join-button" class="dialog-button">Join Game</button>
+			<button id="game-host-button" class="dialog-button">Host Game</button>
 		</div>
-		<h2 style="display: none">This game isn't available yet.</h2>
+		<h2 id="connection-error-message" class="dialog-error-message">This game isn't available yet.</h2>
+	</dialog>
+	
+	<dialog id="join-dialog" class="dialog">
+		<div class="dialog-info">
+			<h1 id="join-dialog-title" class="dialog-title">Join game</h1>
+			<button id="join-dialog-close" class="dialog-close" type="reset" form="join-form"></button>
+		</div>
+		<form id="join-form" class="game-form">
+			<div class="form-element">
+				<label for="username">Username:</label>
+				<input id="username" name="username" type="text" class="input" placeholder="Username" required="required" pattern="[A-Za-z0-9]{3,15}">
+			</div>
+			<div class="form-element">
+				<label for="lobbyId">Lobby ID:</label>
+				<input id="lobbyId" name="lobbyId" type="text" class="input" placeholder="Lobby ID" required="required">
+			</div>
+		</form>
+		<div id="connect-buttons" class="dialog-button-container">
+			<button id="join-start-button" class="dialog-button" type="submit" form="join-form">Join Game</button>
+			<button id="join-cancel-button" class="dialog-button" type="reset" form="join-form">Cancel</button>
+		</div>
+	</dialog>
+	
+	<dialog id="host-dialog" class="dialog">
+		<div class="dialog-info">
+			<h1 id="host-dialog-title" class="dialog-title">Host game</h1>
+			<button id="host-dialog-close" class="dialog-close" type="reset" form="host-form"></button>
+		</div>
+		<form id="host-form" class="game-form">
+			<div class="form-element">
+				<label for="username">Username:</label>
+				<input id="username" name="username" type="text" class="input" placeholder="Username" required="required" pattern="[A-Za-z0-9]{3,15}">
+			</div>
+		</form>
+		<div id="connect-buttons" class="dialog-button-container">
+			<button id="host-start-button" class="dialog-button" type="submit" form="host-form">Host Game</button>
+			<button id="host-cancel-button" class="dialog-button" type="reset" form="host-form">Cancel</button>
+		</div>
 	</dialog>
 	
 	<div class="main">
@@ -67,7 +103,7 @@
 					</div>
 				</div>
 				<div class="card-container">
-					<div tabindex="0" class="card inactive">
+					<div tabindex="0" class="card" data-href="games/connect_four">
 						<span class="card-cap" style="background-image: url('https://store-images.s-microsoft.com/image/apps.41929.14246448385562777.7795b656-4cc6-43e1-897f-ecca74691263.ce6424bf-ec09-434a-9a0d-6d9507621cfa?mode=scale&q=90&h=1080&w=1920')"></span>
 						<div class="card-content">
 							<h2 class="card-title">Connect 4</h2>
@@ -158,50 +194,6 @@
 		</div>
 	</div>
 	
-	<script>
-		const dg = document.querySelectorAll('.dialog')[0];
-		const dgClose = document.querySelectorAll('.dialog-close')[0];
-		const dgBtns = document.querySelectorAll('.dialog-button-container')[0];
-		const dgTitle = dg.querySelectorAll('h1')[0];
-		const dgErrMsg = dg.querySelectorAll('h2')[0];
-		const joinBtn = document.getElementById('join-button');
-		const hostBtn = document.getElementById('host-button');
-		
-		let joinAction;
-		let hostAction;
-		joinBtn.addEventListener('click', () => joinAction());
-		hostBtn.addEventListener('click', () => hostAction());
-		
-		dgClose.addEventListener('click', () => {dg.close(); document.activeElement.blur();});
-		document.addEventListener('keyup', (k) => console.log(k.keyCode));
-		
-		document.querySelectorAll('.card').forEach(card => {
-			const title = card.querySelectorAll('.card-title')[0].firstChild.nodeValue;
-			const href = card.dataset.href;
-			
-			const openDialog = function() {
-				dg.showModal();
-				dgTitle.innerText = title;
-				if (card.classList.contains('inactive')) {
-					dgBtns.style.display = 'none';
-					dgErrMsg.style.display = 'grid';
-				} else {
-					dgBtns.style.display = 'grid';
-					dgErrMsg.style.display = 'none';
-				}
-						
-				//pl.: amoeba/index.html		cookieban: host/join
-				joinAction = function () {
-					console.log(window.location.href + href + '/join.html')
-				}
-				hostAction = function () {
-					console.log(window.location.href + href + '/host.html')
-				}
-			}
-			
-			card.addEventListener('click', () => openDialog());
-			card.addEventListener('keyup', (k) => {if (k.key == 'Enter') openDialog()});
-		});
-	</script>
+	<script src="main.js"></script>
 </body>
 </html>

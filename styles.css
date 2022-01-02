@@ -7,11 +7,7 @@
 	--clr-linear-start: #06BFFF;
 	--clr-linear-end: #2D73FF;
 	
-	--clr-background: rgb(25, 25, 52);
 	--clr-text: rgb(237, 237, 222);
-	--clr-hover: rgba(255, 255, 255, .05);
-	--clr-link-bg: rgb(255,0,127);
-	--clr-link-hover: rgba(255, 255, 255, .25);
 	--scrollbar-radius: 1rem;
 }
 
@@ -40,8 +36,38 @@ body {
 	font-family: "Motiva Sans", Sans-serif;
 }
 
+.form-element {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem 0;
+}
+
+.form-element > *{
+	margin: .25rem 0;
+}
+
+.form-element > input{
+	margin-left: 1rem;
+	width: 65%;
+}
+
+.game-form {
+	font-size: 1.25rem;
+	margin: 2rem 1rem;
+}
+
+.input {
+	font-size: 1.25rem;
+	background: #FFF;
+	border-radius: 0.25rem;
+	border: 0;
+	padding: .1rem .2rem;
+}
+
+
 /* DIALOG */
 .dialog-button-container {
+	margin-top: 1em;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
@@ -62,8 +88,15 @@ body {
 	background: linear-gradient(90deg, var(--clr-linear-start) 30%, var(--clr-linear-end) 150%);
 }
 
+#game-dialog {
+	width: max(30%, 400px);
+}
+
 .dialog {
-	width: max(30%, 330px);
+	width: max(30%, 400px);
+}
+
+.dialog {
 	color: var(--clr-text);
 	border: 0;
 	background-color: var(--clr-5);
@@ -74,8 +107,13 @@ body {
 	background: rgba(0,0,0,0.5);
 }
 
-.dialog h1 {
+.dialog-title {
+  background: linear-gradient(90deg, var(--clr-linear-start) 0%, var(--clr-linear-end) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 	margin-top: 0;
+	text-decoration: bolder;
+	width: max-content;
 }
 
 .dialog-info {
@@ -88,6 +126,9 @@ body {
 	right: 0;
 	font-size: 2rem;
 	cursor: pointer;
+	background: none;
+	border: none;
+	color: var(--clr-text);
 }
 
 .dialog-close:after {
@@ -97,6 +138,11 @@ body {
 
 .dialog-close:hover {
 	color: rgba(0,0,0,0.5);
+}
+
+.dialog-error-message {
+	margin-bottom: 0;
+	color: rgba(255, 255, 255, .25);
 }
 
 
