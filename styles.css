@@ -9,6 +9,7 @@
 	
 	--clr-text: rgb(237, 237, 222);
 	--scrollbar-radius: 1rem;
+	--card-width: 16rem;
 }
 
 ::-webkit-scrollbar {
@@ -166,7 +167,7 @@ body {
 
 .cards-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
 	grid-gap: 1rem;
 	margin: 0 2rem;
 }
@@ -182,7 +183,7 @@ body {
 	cursor: pointer;
 	display: flex;
 	position: relative;
-	width: 16rem;
+	width: var(--card-width);
 	height: 22rem;
 	background: var(--clr-4);
 	border-radius: 0.5rem;
@@ -204,10 +205,9 @@ body {
 
 .card-cap {
 	display: block;
-	background-position: center;
-	background-size: cover;
 	height: 17rem;
-	width: 16rem;
+	width: var(--card-width);
+	object-fit: cover;
 }
 
 .card-content {
