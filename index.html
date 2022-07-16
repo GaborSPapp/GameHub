@@ -86,7 +86,8 @@
 		window.onload = function() {
 			let cards;
 			fetch("games.json")
-				.then(response => cards = response.json());
+				.then(response => response.json())
+				.then(json => cards = json);
 			
 			let parent = document.getElementById("cards-container");
 			
