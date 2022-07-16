@@ -109,7 +109,7 @@
 			let card = document.createElement("div");
 			card.classList.add("card");
 			card.tabindex = 0;
-			if (datahref != null) card.data-href = datahref;
+			if (datahref != null) card.dataset.href = datahref;
 			if (!activity) card.classList.add("inactive");
 			
 			let img = document.createElement("img");
