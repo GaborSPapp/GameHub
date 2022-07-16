@@ -83,11 +83,9 @@
 	
 	<script src="main.js"></script>
 	<script>
-		window.onload = function() {
-			let cards;
-			fetch("games.json")
-				.then(response => response.json())
-				.then(json => cards = json);
+		window.onload = async function() {
+			let cards = await	fetch("games.json")
+													.then(response => response.json());
 			
 			let parent = document.getElementById("cards-container");
 			
