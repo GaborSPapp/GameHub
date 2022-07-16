@@ -76,126 +76,72 @@
 	<div class="main">
 		<div class="content">
 			<h1>Games</h1>
-			<div id="cards-container" class="cards-container">
-			
-				<div class="card-container">
-					<div tabindex="0" class="card" data-href="games/amoeba">
-						<img class="card-cap" src="res/amoeba.png">
-						<div class="card-content">
-							<h2 class="card-title">Amoeba</h2>
-							<div class="card-tags">
-								<span class="card-tag">2 Player</span>
-								<span class="card-tag">Turn-Based</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card inactive">
-						<img class="card-cap" src="https://image.api.playstation.com/cdn/EP0001/CUSA04040_00/LRI3Rg5MKOi5AkefFaMcChNv5WitM7sz.png">
-						<div class="card-content">
-							<h2 class="card-title">Uno</h2>
-							<div class="card-tags">
-								<span class="card-tag">Chill</span>
-								<span class="card-tag">Strategy</span>
-								<span class="card-tag">Yes</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card" data-href="games/connect_four">
-						<img class="card-cap" src="https://store-images.s-microsoft.com/image/apps.41929.14246448385562777.7795b656-4cc6-43e1-897f-ecca74691263.ce6424bf-ec09-434a-9a0d-6d9507621cfa?mode=scale&q=90&h=1080&w=1920">
-						<div class="card-content">
-							<h2 class="card-title">Connect 4</h2>
-							<div class="card-tags">
-								<span class="card-tag">Coming</span>
-								<span class="card-tag">Soon</span>
-								<span class="card-tag">2 Player</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card inactive">
-						<img class="card-cap" src="https://i.ebayimg.com/images/g/2dwAAOSwJuZbtcfy/s-l400.jpg">
-						<div class="card-content">
-							<h2 class="card-title">Battleship</h2>
-							<div class="card-tags">
-								<span class="card-tag">For</span>
-								<span class="card-tag">Holding</span>
-								<span class="card-tag">Place</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card inactive">
-						<img class="card-cap" src="https://ipadboardgames.org/wp-content/uploads/2011/05/bang1.jpg">
-						<div class="card-content">
-							<h2 class="card-title">Bang</h2>
-							<div class="card-tags">
-								<span class="card-tag">Leave</span>
-								<span class="card-tag">Me</span>
-								<span class="card-tag">Alone</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card inactive">
-						<img class="card-cap" src="https://preview.redd.it/82h08yqbucs11.jpg?auto=webp&s=361862ce9c3c9abb0b16424e7411bfc779eb4fe9">
-						<div class="card-content">
-							<h2 class="card-title">Pamper The Doggo</h2>
-							<div class="card-tags">
-								<span class="card-tag">Fluffy</span>
-								<span class="card-tag">Puppy</span>
-								<span class="card-tag">Love</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card inactive">
-						<img class="card-cap" src="res/coin.gif">
-						<div class="card-content">
-							<h2 class="card-title">Free Money</h2>
-							<div class="card-tags">
-								<span class="card-tag">2 Player</span>
-								<span class="card-tag">Turn-Based</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card inactive">
-						<img class="card-cap" src="res/lidl.png">
-						<div class="card-content">
-							<h2 class="card-title">Lidl Games</h2>
-							<div class="card-tags">
-								<span class="card-tag">2 Player</span>
-								<span class="card-tag">Turn-Based</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-container">
-					<div tabindex="0" class="card inactive">
-						<img class="card-cap" src="res/nextprofile4.jpg">
-						<div class="card-content">
-							<h2 class="card-title">Hello There</h2>
-							<div class="card-tags">
-								<span class="card-tag">2 Player</span>
-								<span class="card-tag">Turn-Based</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				
+			<div id="cards-container" class="cards-container">			
 			</div>
 		</div>
 	</div>
 	
 	<script src="main.js"></script>
+	<script>
+		window.onload = function() {
+			let cards;
+			fetch("games.json")
+				.then(response => response.json())
+				.then(json => cards = JSON.stringify(json, null, "\t"));
+			
+			let parent = document.getElementById("cards-container");
+			
+			for (const [key, game] of Object.entries(dict["games"])) {
+				activity = game["activity"];
+				image = game["image"] ? game["image"] : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
+				name = game["title"];
+				tags = game["tags"] ? game["tags"] : ["no", "tags", "available"];
+				path = game["path"] ? game["path"] : null;
+				
+				parent.appendChild(createCard(activity, image, name, tags, datahref));
+			}
+		}
+		
+		
+		function createCard( activity, image, name, tags, datahref ) {
+			let cardContainer = document.createElement("div");
+			cardContainer.classList.add("card-container");
+			
+			let card = document.createElement("div");
+			card.classList.add("card");
+			card.tabindex = 0;
+			if (datahref != null) card.data-href = data-href;
+			if (!activity) card.classList.add("inactive");
+			
+			let img = document.createElement("img");
+			img.classList.add("card-cap");
+			img.src = image;
+			
+			let cardContent = document.createElement("div");
+			cardContent.classList.add("card-content");
+			
+			let title = document.createElement("h2");
+			title.classList.add("card-title");
+			title.innerText = name;
+			
+			let cardTags = document.createElement("div");
+			cardTags.classList.add("card-tags");
+			
+			for (i=0; i<tags.length; i++) {
+				let cardTag = document.createElement("span");
+				cardTag.classList.add("card-tag");
+				cardTag.innerText = tags[i].text;
+				cardTags.appendChild(cardTag)
+			}
+			
+			cardContent.appendChild(title);
+			cardContent.appendChild(cardTags);
+			card.appendChild(img);
+			card.appendChild(cardContent);
+			cardContainer.appendChild(card);
+			
+			return cardContainer;
+		}
+	</script>
 </body>
 </html>
