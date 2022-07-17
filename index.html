@@ -97,6 +97,10 @@
 				
 				parent.appendChild(createCard(activity, image, name, tags, path));
 			}
+			
+			let tag = document.createElement("script");
+			tag.src = "main.js";
+			document.body.appendChild(tag);
 		}
 		
 		
@@ -140,6 +144,5 @@
 			return cardContainer;
 		}
 	</script>
-	<script src="main.js"></script>
 </body>
 </html>
