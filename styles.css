@@ -225,7 +225,9 @@ body {
 .card-tags {
 	position: absolute;
 	margin: .5rem;
-	bottom: .3rem;
+	bottom: 0;
+	display: flex;
+	gap: .3rem;
 }
 
 .card-tag {
