@@ -90,11 +90,11 @@
 			let parent = document.getElementById("cards-container");
 			
 			for (const [key, game] of Object.entries(cards["games"])) {
-				activity = game["activity"];
-				image = game["image"] ? game["image"] : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
-				name = game["title"];
-				tags = game["tags"] ? game["tags"] : ["no", "tags", "available"];
-				path = game["path"] ? game["path"] : null;
+				let activity = game["activity"];
+				let image = game["image"] ? game["image"] : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
+				let name = game["title"];
+				let tags = game["tags"] ? game["tags"] : ["no", "tags", "available"];
+				let path = game["path"] ? game["path"] : null;
 				
 				parent.appendChild(createCard(activity, image, name, tags, path));
 			}
@@ -128,8 +128,8 @@
 			for (i=0; i<tags.length; i++) {
 				let cardTag = document.createElement("span");
 				cardTag.classList.add("card-tag");
-				cardTag.innerText = tags[i].text;
-				cardTags.appendChild(cardTag)
+				cardTag.innerText = tags[i];
+				cardTags.appendChild(cardTag);
 			}
 			
 			cardContent.appendChild(title);
