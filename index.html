@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>GameHub</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
@@ -42,15 +43,15 @@
 		</div>
 		<form id="join-form" class="game-form">
 			<div class="form-element">
-				<label for="username">Username:</label>
-				<input id="username" name="username" type="text" class="input" placeholder="Username" required="required" pattern="[A-Za-z0-9]{3,15}">
+				<label for="join-username">Username:</label>
+				<input id="join-username" name="join-username" type="text" class="input" placeholder="Username" required="required" pattern="[A-Za-z0-9]{3,15}">
 			</div>
 			<div class="form-element">
 				<label for="lobbyId">Lobby ID:</label>
 				<input id="lobbyId" name="lobbyId" type="text" class="input" placeholder="Lobby ID" required="required">
 			</div>
 		</form>
-		<div id="connect-buttons" class="dialog-button-container">
+		<div id="join-connect-buttons" class="dialog-button-container">
 			<button id="join-start-button" class="dialog-button" type="submit" form="join-form">Join Game</button>
 			<button id="join-cancel-button" class="dialog-button" type="reset" form="join-form">Cancel</button>
 		</div>
@@ -63,11 +64,11 @@
 		</div>
 		<form id="host-form" class="game-form">
 			<div class="form-element">
-				<label for="username">Username:</label>
-				<input id="username" name="username" type="text" class="input" placeholder="Username" required="required" pattern="[A-Za-z0-9]{3,15}">
+				<label for="host-username">Username:</label>
+				<input id="host-username" name="host-username" type="text" class="input" placeholder="Username" required="required" pattern="[A-Za-z0-9]{3,15}">
 			</div>
 		</form>
-		<div id="connect-buttons" class="dialog-button-container">
+		<div id="host-connect-buttons" class="dialog-button-container">
 			<button id="host-start-button" class="dialog-button" type="submit" form="host-form">Host Game</button>
 			<button id="host-cancel-button" class="dialog-button" type="reset" form="host-form">Cancel</button>
 		</div>

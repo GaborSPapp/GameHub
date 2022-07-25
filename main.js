@@ -21,7 +21,7 @@ const joinDialogTitle = joinDialog.querySelector('#join-dialog-title');
 const joinStartBtn = joinDialog.querySelector('#join-start-button');
 const joinCancelBtn = joinDialog.querySelector('#join-cancel-button');
 const joinForm = joinDialog.querySelector('#join-form');
-const joinUsername = joinDialog.querySelector('#username');
+const joinUsername = joinDialog.querySelector('#join-username');
 
 joinDialogClose.addEventListener('click', () => {joinDialog.close(); document.activeElement.blur();});
 joinCancelBtn.addEventListener('click', () => {joinDialog.close(); gameDialog.showModal();});
