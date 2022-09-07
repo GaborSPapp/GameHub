@@ -189,7 +189,7 @@ body {
 	border-radius: 0.5rem;
 	overflow: hidden;
 	flex-direction: column;
-	transition: transform 200ms;
+	transition: scale 200ms;
 }
 
 .inactive {
