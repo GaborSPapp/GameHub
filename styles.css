@@ -200,7 +200,7 @@ body {
 
 .card:focus,
 .card:hover {
-	transform: scale(1.05);
+	scale: 1.05;
 }
 
 .card-cap {
