@@ -113,8 +113,9 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 	margin-top: 0;
-	text-decoration: bolder;
+	margin-block-end: 0.67em;
 	width: max-content;
+	font-size: 2em;
 }
 
 .dialog-info {
